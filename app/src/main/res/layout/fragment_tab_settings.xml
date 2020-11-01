@@ -23,9 +23,9 @@
 
 
             android:gravity="center"
-            android:text="Update your personal preferances"
+            android:text="@string/settingsTitle"
             android:textAllCaps="false"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/editProfile"
@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/radio_button_male_checked"
             android:padding="18dp"
-            android:text="Edit Profile"
+            android:text="@string/Edit_Profile_btn"
             android:textAllCaps="false"
             android:textColor="@color/titleWhite" />
 
@@ -53,7 +53,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/radio_button_male_selector"
             android:padding="18dp"
-            android:text="Notifications Settings"
+            android:text="@string/notifySettings"
             android:textAllCaps="false"
             android:textColor="@color/textBlack" />
 
@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="100dp">/</LinearLayout>
+        android:padding="100dp"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,9 +78,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/button"
-            android:padding="18dp"
+            android:padding="18sp"
             android:paddingBottom="20dp"
-            android:text="Log Out"
+            android:text="@string/Log_Out"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/titleWhite">

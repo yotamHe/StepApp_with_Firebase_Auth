@@ -2,4 +2,41 @@
     <string name="app_name">StepApp_α</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="totalSteps">Total Steps Taken: </string>
+    <string name="finish">Finish Session </string>
+    <string name="reg">Registration</string>
+    <string name="register">Register</string>
+    <string name="Back">Back</string>
+    <string name="welcomeTxt">Welcome to StepApp, Please fill in the following
+fields in order to complete your registration</string>
+    <string name="Full_name">Full name</string>
+    <string name="Email_Address">Email Address</string>
+    <string name="regPassword">Password</string>
+    <string name="helpTxt">Need Help?</string>
+    <string name="settingsTitle">Update your personal Preferences</string>
+    <string name="Edit_Profile_btn">Edit Profile</string>
+    <string name="notifySettings">Notifications Settings</string>
+    <string name="logOut">Log Out</string>
+    <string name="newToApp">New to StepApp? </string>
+    <string name="regNow">Register now! </string>
+    <string name="welcomeToApp">Welcome to StepApp!  </string>
+    <string name="logInText">Please login in order to continue</string>
+    <string name="loginBtn">Login</string>
+    <string name="loginMail">Enter Email Address</string>
+    <string name="loginPass">Enter Your Password</string>
+    <string name="notifyTitle">Notifications Settings</string>
+    <string name="notifyHint">Set Repeating Time (in minutes)</string>
+    <string name="EnableBtn">Enable</string>
+    <string name="DisableBtn">Disable</string>
+    <string name="SaveEdit">Save</string>
+    <string name="Change_Picture">Change Picture</string>
+    <string name="User_Name_Edit">User Name</string>
+    <string name="Birth_Date">Birth Date</string>
+    <string name="Height">Height</string>
+    <string name="Weight">Weight</string>
+    <string name="Log_Out">Log Out</string>
+    <string name="Login">Login</string>
+
+
+
 </resources>

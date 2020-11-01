@@ -39,7 +39,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="18dp"
-                    android:text="Save"
+                    android:text="@string/SaveEdit"
                     android:textAllCaps="false"
                     android:textColor="@color/loginButton"
                     android:textSize="18sp" />
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Change Picture"
+            android:text="@string/Change_Picture"
             android:textAllCaps="false"
             android:textColor="@color/loginButton"
             android:textSize="18sp" />
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="User Name"
+            android:hint="@string/User_Name_Edit"
             android:textAllCaps="false"
             app:met_floatingLabel="normal" />
 
@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Email Address"
+            android:hint="@string/Email_Address"
             android:textAllCaps="false"
             app:met_floatingLabel="normal" />
 
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Password"
+            android:hint="@string/regPassword"
             android:textAllCaps="false"
             app:met_floatingLabel="normal" />
 
@@ -107,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Birth Date"
+            android:hint="@string/Birth_Date"
             android:textAllCaps="false"
             app:met_floatingLabel="normal" />
 
@@ -116,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Height"
+            android:hint="@string/Height"
             android:textAllCaps="false"
             app:met_floatingLabel="normal" />
 
@@ -125,7 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Weight"
+            android:hint="@string/Weight"
             android:textAllCaps="false"
             app:met_floatingLabel="normal" />
 

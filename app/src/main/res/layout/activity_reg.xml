@@ -30,10 +30,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="2dp"
-                    android:text="Back"
-                    android:textColor="@color/loginButton"
-                    android:textAllCaps="false"
                     android:onClick="backToLogin"
+                    android:text="@string/Back"
+                    android:textAllCaps="false"
+                    android:textColor="@color/loginButton"
                     android:textSize="18sp" />
 
                 <TextView
@@ -43,7 +43,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:text="Register"
+                    android:text="@string/register"
                     android:textColor="@color/loginButton"
                     android:textSize="18sp" />
 
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/forte"
-            android:text="Registration"
+            android:text="@string/reg"
             android:textAllCaps="false"
             android:textColor="@color/textBlack"
             android:textSize="18sp" />
@@ -75,18 +75,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bell"
-            android:text="Welcome to StepApp, Please fill in the following
-fields in order to complete your registration"
+            android:text="@string/welcomeTxt"
             android:textAllCaps="false"
-            android:textSize="15dp"
-            android:textColor="@color/regButton" />
+            android:textColor="@color/regButton"
+            android:textSize="15sp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Full name"
+            android:hint="@string/Full_name"
             android:inputType="text"
             app:met_floatingLabel="normal" />
 
@@ -95,7 +94,7 @@ fields in order to complete your registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Email Address"
+            android:hint="@string/Email_Address"
             android:inputType="textEmailAddress"
             app:met_floatingLabel="normal" />
 
@@ -103,20 +102,25 @@ fields in order to complete your registration"
             android:id="@+id/regPassInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:layout_marginTop="20dp"
-            android:hint="Password"
+            android:hint="@string/regPassword"
+            android:inputType="textPassword"
             app:met_floatingLabel="normal" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+        </LinearLayout>
 
         <TextView
+            android:id="@+id/helpBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Need Help?"
             android:fontFamily="@font/bellbold"
-            android:id="@+id/helpBtn"
-            android:textColor="@color/loginButton"
-            />
+            android:text="@string/helpTxt"
+            android:textColor="@color/loginButton" />
 
     </LinearLayout>
 

@@ -26,7 +26,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="Finish Session"
+                android:text="@string/finish"
                 android:textColor="@color/loginButton"
                 android:textSize="18sp" />
 
@@ -49,17 +49,6 @@
                 android:textColor="@color/loginButton"
                 android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/stepsCnt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/bell"
-                android:text="Steps Taken: "
-                android:textAllCaps="false"
-                android:textColor="@color/textBlack"
-                android:textSize="14sp" />
-
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView"
@@ -70,21 +59,15 @@
                 android:src="@drawable/piechartdummy" />
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="329dp"
-                android:layout_height="165dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/segoeuiitalic"
-                android:text="your recent activity was weight lifting (62 mins total)\n\n
-you drank 20 glasses of water this week.
-monthly record - 50 glasses in total.\n\n
-steps taken: 12000 (monthly record - 36012)"
-                android:textAlignment="center"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toTopOf="@+id/newActivityBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:id="@+id/stepsCnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="@font/bell"
+                android:text="@string/totalSteps"
+                android:textAllCaps="false"
+                android:textColor="@color/textBlack"
+                android:textSize="14sp" />
 
 
         </LinearLayout>
