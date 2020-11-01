@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="textBlack">#040000</color>
+    <color name="titleWhite">#FFFFFF</color>
+    <color name="regButton">#1E5988</color>
+    <color name="inputLogin">#213443</color>
+    <color name="loginButton">#1F537D</color>
+    <color name="regFields">#E8EEF3</color>
+    <color name="regText">#49799F</color>
+    <color name="inputfields">#E8EEF3</color>
+</resources>
