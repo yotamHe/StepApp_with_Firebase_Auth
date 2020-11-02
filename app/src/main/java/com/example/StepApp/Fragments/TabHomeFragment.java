@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -65,7 +65,7 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
 
         databaseReference = FirebaseDatabase.getInstance()
                 .getReference().child("StepAppDB").child("Users")
-                .child(auth.getCurrentUser().getUid());
+                .child(Objects.requireNonNull(auth.getCurrentUser()).getUid());
 
 
 

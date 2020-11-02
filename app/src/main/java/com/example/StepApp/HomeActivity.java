@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.StepApp.R;
+import com.example.StepApp.Fragments.TabHomeFragment;
+import com.example.StepApp.Fragments.TabSettingsFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeActivity extends AppCompatActivity {
