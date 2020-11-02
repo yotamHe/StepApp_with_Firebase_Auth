@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.SensorsAndAdapters;
 
 public class StepDetector {
 

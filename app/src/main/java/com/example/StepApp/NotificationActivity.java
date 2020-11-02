@@ -36,16 +36,20 @@ public class NotificationActivity extends AppCompatActivity {
                 int time = Integer.parseInt(setTime.getText().toString().trim());
                 String txtField = setTime.getText().toString().trim();
 
-                Calendar calendar = Calendar.getInstance();
-                    Intent intent = new Intent(getApplicationContext(), Receiver.class);
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext()
-                            , 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar
-                            .getTimeInMillis(), System
-                            .currentTimeMillis() + (time * 1000), pendingIntent);
-                }
+                Calendar calendar = Calendar.getInstance();
+                Intent intent = new Intent(getApplicationContext(), Receiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext()
+                        , 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar
+                        .getTimeInMillis(), System
+                        .currentTimeMillis() + (time * 1000), pendingIntent);
+
+
+            }
+
 
         });
 

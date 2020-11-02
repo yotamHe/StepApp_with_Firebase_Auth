@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.SensorsAndAdapters;
 
 public class SensorFilter {
 
@@ -7,8 +7,8 @@ public class SensorFilter {
 
     public static float sum(float[] array) {
         float retval = 0;
-        for (int i = 0; i < array.length; i++) {
-            retval += array[i];
+        for (float v : array) {
+            retval += v;
         }
         return retval;
     }
@@ -23,8 +23,8 @@ public class SensorFilter {
 
     public static float norm(float[] array) {
         float retval = 0;
-        for (int i = 0; i < array.length; i++) {
-            retval += array[i] * array[i];
+        for (float v : array) {
+            retval += v * v;
         }
         return (float) Math.sqrt(retval);
     }

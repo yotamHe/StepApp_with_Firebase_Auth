@@ -21,7 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.StepApp.Models.User;
-import com.example.StepApp.R;
+import com.example.StepApp.SensorsAndAdapters.StepDetector;
+import com.example.StepApp.SensorsAndAdapters.StepListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

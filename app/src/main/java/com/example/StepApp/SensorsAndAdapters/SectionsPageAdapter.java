@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.SensorsAndAdapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

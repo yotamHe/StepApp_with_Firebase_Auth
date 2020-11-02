@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.StepApp.Fragments.TabHomeFragment;
 import com.example.StepApp.Fragments.TabSettingsFragment;
+import com.example.StepApp.SensorsAndAdapters.SectionsPageAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeActivity extends AppCompatActivity {
