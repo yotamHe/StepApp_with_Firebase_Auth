@@ -82,10 +82,10 @@ public class regActivity extends AppCompatActivity {
                 String emailInput = regInputEmail.getText().toString().trim();
                 String passwordInput = regInputPassword.getText().toString().trim();
                 String fullName = Objects.requireNonNull(fullname.getText()).toString().trim();
-                if (emailInput.isEmpty() && passwordInput.isEmpty()) {
+                if (emailInput.isEmpty() && passwordInput.isEmpty() && fullName.isEmpty()) {
                     regInputEmail.setError("Field can't be empty");
                     regInputPassword.setError("Field can't be empty");
-                    //fullname.setError("Field can't be empty");
+                    fullname.setError("Field can't be empty");
 
                 } else if (emailInput.isEmpty() && !PASSWORD_PATTERN.matcher(passwordInput).matches()) {
                     regInputEmail.setError("Field can't be empty");

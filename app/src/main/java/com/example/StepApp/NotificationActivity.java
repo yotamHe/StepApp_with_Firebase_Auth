@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.StepApp.Fragments.TabHomeFragment;
+import com.example.StepApp.Fragments.TabSettingsFragment;
 import com.example.StepApp.R;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -21,6 +24,7 @@ public class NotificationActivity extends AppCompatActivity {
     private MaterialEditText setTime;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,7 @@ public class NotificationActivity extends AppCompatActivity {
         enable = (Button) findViewById(R.id.enable);
         disable = (Button) findViewById(R.id.disable);
         setTime = (MaterialEditText) findViewById(R.id.repeatingText);
+
 
         enable.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +57,7 @@ public class NotificationActivity extends AppCompatActivity {
 
 
         });
+
 
     }
 }

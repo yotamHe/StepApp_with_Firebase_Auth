@@ -63,9 +63,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:fontFamily="@font/bell"
+                android:fontFamily="@font/segoeui"
                 android:text="@string/totalSteps"
                 android:textAllCaps="false"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/loginButton"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/stepsToKm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="@font/bell"
+                android:text=""
+                android:textAllCaps="false"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/textBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/stepsToKg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="@font/bell"
+                android:text=""
+                android:textAllCaps="false"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/textBlack"
                 android:textSize="14sp" />
 
