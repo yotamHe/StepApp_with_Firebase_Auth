@@ -37,6 +37,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -84,7 +85,7 @@ public class UserEditActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         User user = dataSnapshot.getValue(User.class);
-                        fullname.setText(user.getUserName());
+                        fullname.setText(Objects.requireNonNull(user).getUserName());
                         userMail.setText(user.getEmail());
                         userPassword.setText(user.getPassword());
                         Picasso.get().load(user.getImageurl()).into(imageProfile);

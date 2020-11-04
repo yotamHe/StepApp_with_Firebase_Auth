@@ -6,6 +6,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,21 +44,37 @@ public class NotificationActivity extends AppCompatActivity {
 
 
                 Calendar calendar = Calendar.getInstance();
-                Intent intent = new Intent(getApplicationContext(), Receiver.class);
+
+                Intent intent = new Intent(NotificationActivity.this, MyService.class);
+                intent.setAction(MyService.ACTION_START_FOREGROUND_SERVICE);
+
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext()
-                        , 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                        , 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar
                         .getTimeInMillis(), System
                         .currentTimeMillis() + (time * 1000), pendingIntent);
 
+                startService(intent);
+
+                /*
+                Intent intent = new Intent(getApplicationContext(), Receiver.class);
+
+*/
 
             }
 
 
         });
-
+        disable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NotificationActivity.this, MyService.class);
+                intent.setAction(MyService.ACTION_STOP_FOREGROUND_SERVICE);
+                startService(intent);
+            }
+        });
 
     }
 }

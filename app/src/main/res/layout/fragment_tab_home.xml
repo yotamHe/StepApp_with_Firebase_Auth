@@ -14,7 +14,7 @@
         android:background="?android:attr/windowBackground">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/Toptoolbar"
+            android:id="@+id/topToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/windowBackground">
@@ -25,10 +25,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
+                android:layout_gravity="start"
+                android:layout_marginEnd="10dp"
+                android:background="@color/titleWhite"
                 android:text="@string/finish"
                 android:textColor="@color/loginButton"
                 android:textSize="18sp" />
+
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -36,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="603dp"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="25dp">
 
             <TextView
                 android:id="@+id/mainText"
@@ -52,21 +55,20 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
                 android:layout_gravity="center"
-                android:layout_margin="60dp"
-                android:src="@drawable/piechartdummy" />
+                android:layout_margin="65dp"
+                android:src="@drawable/running" />
 
             <TextView
                 android:id="@+id/stepsCnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:fontFamily="@font/segoeui"
-                android:text="@string/totalSteps"
-                android:textAllCaps="false"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/forte"
+                android:textAllCaps="false"
                 android:textColor="@color/loginButton"
                 android:textSize="14sp" />
 
@@ -74,24 +76,24 @@
                 android:id="@+id/stepsToKm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:fontFamily="@font/bell"
-                android:text=""
-                android:textAllCaps="false"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/textBlack"
+                android:fontFamily="@font/forte"
+                android:text="@string/stepsToKm"
+                android:textAllCaps="false"
+                android:textColor="@color/loginButton"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/stepsToKg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:fontFamily="@font/bell"
-                android:text=""
-                android:textAllCaps="false"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/textBlack"
+                android:fontFamily="@font/forte"
+                android:text="@string/stepsToKg"
+                android:textAllCaps="false"
+                android:textColor="@color/loginButton"
                 android:textSize="14sp" />
 
 
@@ -99,5 +101,6 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
+
 
 </LinearLayout>

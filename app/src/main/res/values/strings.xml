@@ -36,6 +36,8 @@ fields in order to complete your registration</string>
     <string name="Weight">Weight</string>
     <string name="Log_Out">Log Out</string>
     <string name="Login">Login</string>
+    <string name="stepsToKm">Total Kilometers Walked: </string>
+    <string name="stepsToKg">Total Calories Burned: </string>
 
 
 

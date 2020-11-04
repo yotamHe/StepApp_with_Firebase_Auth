@@ -7,6 +7,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,16 @@ import androidx.fragment.app.Fragment;
 
 import com.example.StepApp.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -45,7 +50,16 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
     private DatabaseReference databaseReference;
     private CircleImageView userPic;
     private TextView finishSession;
+    private Integer stepCount = 0;
+    private double km = stepCount * 0.000762;
+    private double calories = stepCount * 0.04;
+    private double MagnitudePrevious = 0;
+    private TextView stepsToKm;
+    private TextView stepsToKg;
+    private FirebaseUser fUser;
 
+
+    private String TAG2 = "step_sensor_data";
 
     public TabHomeFragment() {
     }
@@ -56,24 +70,40 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab_home, container, false);
         mainText = (TextView) view.findViewById(R.id.mainText);
+        stepsToKm = (TextView) view.findViewById(R.id.stepsToKm);
+        stepsToKg = (TextView) view.findViewById(R.id.stepsToKg);
         finishSession = (TextView) view.findViewById(R.id.finishSession);
         auth = FirebaseAuth.getInstance();
         getActivity().getWindow().addFlags(WindowManager.LayoutParams
                 .FLAG_KEEP_SCREEN_ON);
         textCounter = (TextView) view.findViewById(R.id.stepsCnt);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        finishSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String, Object> nMap = new HashMap<>();
+                nMap.put("steps", stepCount);
+
+
+                FirebaseDatabase.getInstance().getReference().child("StepAppDB").child("Users")
+                        .child(fUser.getUid()).updateChildren(nMap);
+                Toast.makeText(TabHomeFragment.this.getActivity(), "Session Completed, data has been updated", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         databaseReference = FirebaseDatabase.getInstance()
                 .getReference().child("StepAppDB").child("Users")
                 .child(Objects.requireNonNull(auth.getCurrentUser()).getUid());
 
 
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String name = dataSnapshot.child("name").getValue().toString().trim();
+                String name = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString().trim();
                 mainText.setText("Hello " + name + " !!");
 
 
@@ -123,9 +153,23 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor == sensor) {
-            int sCount = (int) event.values[0];
-            textCounter.setText(String.valueOf(sCount));
+//        if (event.sensor == sensor) {
+//            int sCount = (int) event.values[0];
+//            textCounter.setText(String.valueOf(sCount));
+//        }
+        Log.d(TAG2, "event change");
+        if (event != null) {
+            Log.d(TAG2, "event not null");
+            Log.d(TAG2, event.values.toString());
+            Log.d(TAG2, "event value count " + event.values[0]);
+            if (event.values[0] > 6) {
+                stepCount++;
+            }
+            Integer divide = (stepCount%5000);
+            textCounter.setText("Total Steps Taken: " + divide.toString());
+            stepsToKm.setText("Total Distance Walked: " + new DecimalFormat("##.#").format(km) + " km");
+            stepsToKg.setText("Total Calories Burned: " + new DecimalFormat("##.#").format(calories));
+
         }
 
     }
