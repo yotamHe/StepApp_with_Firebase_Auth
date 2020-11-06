@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.StepApp.Models.User;
+import com.example.StepApp.R;
 import com.example.StepApp.SensorsAndAdapters.StepDetector;
 import com.example.StepApp.SensorsAndAdapters.StepListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private StepDetector simpleStepDetector;
     private SensorManager sensorManager;
     private Sensor accel;
-    //private static final String TEXT_NUM_STEPS = "Number of Steps: ";
     private int numSteps;
     private TextView TvSteps;
     private Button BtnStart;
@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private EditText textInputEmail;
     private EditText textInputPassword;
-    //private Button loginBtn;
 
 
     @Override
@@ -68,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         mAuth = FirebaseAuth.getInstance();
         textInputEmail = findViewById(R.id.emailInput);
         textInputPassword = findViewById(R.id.editTextTextPassword);
-        //loginBtn=findViewById(R.id.loginButton);
 
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -77,10 +75,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         simpleStepDetector.registerListener(this);
         pd = new ProgressDialog(this);
 
-        //TvSteps = (TextView) findViewById(R.id.tv_steps);
         BtnStart = (Button) findViewById(R.id.loginButton);
 
 
+        /*
+        * what happens when the user clicks on the login button:
+        * if valid - continues to home screen
+        * else, error messages will appear
+        * */
         BtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +120,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         });
     }
-
 
     //Exit app function
     @Override
@@ -158,6 +159,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         pd.setMessage("Please Wait..");
         pd.show();
 
+
+        //authentication with Firebase
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -166,19 +169,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     Log.d("test", "signInWithEmail:success");
                     FirebaseUser user = mAuth.getCurrentUser();
                     Toast.makeText(MainActivity.this, "Welcome Back!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this,HomeActivity.class));
-
+                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
 
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("test", "signInWithEmail:failure", task.getException());
                     Toast.makeText(MainActivity.this, "Something Went Wrong...",
                             Toast.LENGTH_SHORT).show();
-
                 }
 
                 pd.dismiss();
-
             }
         });
     }
@@ -190,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     event.timestamp, event.values[0], event.values[1], event.values[2]
             );
         }
-
     }
 
     @Override
@@ -201,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void step(long timeNS) {
         numSteps++;
-        //TvSteps.setText(TEXT_NUM_STEPS + numSteps);
+
     }
 
 }

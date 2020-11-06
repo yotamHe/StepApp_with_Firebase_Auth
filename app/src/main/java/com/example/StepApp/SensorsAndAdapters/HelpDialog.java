@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.SensorsAndAdapters;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -16,6 +16,7 @@ public class HelpDialog extends AppCompatDialogFragment {
 
     @NonNull
     @Override
+    //help dialog file
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Registration Help")

@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -80,6 +80,7 @@ public class UserEditActivity extends AppCompatActivity {
         fUser = FirebaseAuth.getInstance().getCurrentUser();
         storageRef = FirebaseStorage.getInstance().getReference().child("StepAppDB").child("Uploads");
 
+        //pull data from Database
         FirebaseDatabase.getInstance().getReference().child("StepAppDB").child("Users").child(fUser.getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -98,6 +99,7 @@ public class UserEditActivity extends AppCompatActivity {
                     }
                 });
 
+        //closes screen
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +107,7 @@ public class UserEditActivity extends AppCompatActivity {
             }
         });
 
+        //changes user photo
         changePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +116,7 @@ public class UserEditActivity extends AppCompatActivity {
             }
         });
 
+        //selects user photo
         imageProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +133,7 @@ public class UserEditActivity extends AppCompatActivity {
         });
     }
 
+    //sends new data to DB
     private void updateProfile() {
         HashMap<String, Object> map = new HashMap<>();
         map.put("name", fullname.getText().toString().trim());
@@ -143,6 +148,7 @@ public class UserEditActivity extends AppCompatActivity {
         uploadImage();
     }
 
+    //uploads photo to DB
     private void uploadImage() {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setMessage("Updating your information, please wait...");
@@ -160,11 +166,11 @@ public class UserEditActivity extends AppCompatActivity {
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
-                        if (downloadUri != null){
+                        if (downloadUri != null) {
                             FirebaseDatabase.getInstance().getReference().child("StepAppDB").child("Users").child(fUser.getUid())
-                                .child("Imageurl").setValue(downloadUri.toString())
+                                    .child("Imageurl").setValue(downloadUri.toString())
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -174,38 +180,14 @@ public class UserEditActivity extends AppCompatActivity {
                                     }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.d("myDebug", "onFailure: "+e.getMessage());
+                                    Log.d("myDebug", "onFailure: " + e.getMessage());
                                 }
                             });
                         }
                     }
                 }
             });
-//            uploadTask = fileRef.putFile(mImageUri);
-//            uploadTask.continueWithTask(new Continuation() {
-//                @Override
-//                public Object then(@NonNull Task task) throws Exception {
-//                    if (!task.isSuccessful()) {
-//                        Log.d("myDebug", "then: "+task.getException().getMessage());
-//                        throw task.getException();
-//                    }
-//                    return fileRef.getDownloadUrl();
-//                }
-//            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                @Override
-//                public void onComplete(@NonNull Task<Uri> task) {
-//
-//                    if (task.isSuccessful()) {
-//                        Uri downloadUri = task.getResult();
-//                        String Url = downloadUri.toString();
-//                        FirebaseDatabase.getInstance().getReference().child("StepAppDB").child("Users").child(fUser.getUid())
-//                                .child("Imageurl").setValue(Url);
-//                        pd.dismiss();
-//                    } else {
-//                        Toast.makeText(UserEditActivity.this, "Upload Failed", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            });
+
         } else {
             Toast.makeText(this, "No Image Selected", Toast.LENGTH_SHORT).show();
         }

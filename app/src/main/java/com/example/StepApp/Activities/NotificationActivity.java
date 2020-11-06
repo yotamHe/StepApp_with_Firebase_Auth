@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,17 +6,15 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.example.StepApp.Fragments.TabHomeFragment;
-import com.example.StepApp.Fragments.TabSettingsFragment;
 import com.example.StepApp.R;
+import com.example.StepApp.Services.MyService;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -26,6 +24,7 @@ public class NotificationActivity extends AppCompatActivity {
 
 
 
+    //enable/disable notifications screen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,7 @@ public class NotificationActivity extends AppCompatActivity {
         enable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int time = Integer.parseInt(setTime.getText().toString().trim());
+                int time = Integer.parseInt(Objects.requireNonNull(setTime.getText()).toString().trim());
                 String txtField = setTime.getText().toString().trim();
 
 
@@ -58,10 +57,6 @@ public class NotificationActivity extends AppCompatActivity {
 
                 startService(intent);
 
-                /*
-                Intent intent = new Intent(getApplicationContext(), Receiver.class);
-
-*/
 
             }
 

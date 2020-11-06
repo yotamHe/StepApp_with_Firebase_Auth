@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="com.example.StepApp.MainActivity">
+    tools:context="com.example.StepApp.Activities.MainActivity">
 
     <TextView
         android:id="@+id/bottomText"
@@ -116,6 +116,7 @@
         android:textColor="@color/titleWhite"
         android:textColorHint="@color/regButton"
         android:textSize="18sp"
+        android:importantForAutofill="no"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.401"
@@ -133,6 +134,7 @@
         android:background="@drawable/loginfields"
         android:ems="10"
         android:hint="@string/loginPass"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
         android:textColor="@color/titleWhite"
         android:textColorHint="@color/regButton"

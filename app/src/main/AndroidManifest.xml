@@ -17,32 +17,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name="com.example.StepApp.NotificationActivity"
+            android:name="com.example.StepApp.Activities.NotificationActivity"
             android:screenOrientation="portrait">
 
         </activity>
         <service
-            android:name=".MyService"
+            android:name=".Services.MyService"
             android:enabled="true"
             android:exported="true" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
 
         <activity
-            android:name="com.example.StepApp.UserEditActivity"
+            android:name="com.example.StepApp.Activities.UserEditActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.StepApp.HomeActivity"
+            android:name="com.example.StepApp.Activities.HomeActivity"
             android:screenOrientation="portrait" />
 
-        <receiver android:name="com.example.StepApp.Receiver" />
 
-        <activity android:name="com.example.StepApp.Repeating_activity" />
+        <activity android:name="com.example.StepApp.SensorsAndAdapters.Repeating_activity" />
         <activity
-            android:name="com.example.StepApp.regActivity"
+            android:name="com.example.StepApp.Activities.regActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.StepApp.MainActivity"
+            android:name="com.example.StepApp.Activities.MainActivity"
             android:screenOrientation="portrait">
 
             <intent-filter>

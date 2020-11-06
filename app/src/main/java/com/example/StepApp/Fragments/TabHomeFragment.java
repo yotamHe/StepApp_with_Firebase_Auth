@@ -44,7 +44,6 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
     private TextView textCounter;
     boolean activityRunning;
     private boolean isCntSensorPresent;
-    //private Button buttonReturn;
     private TextView mainText;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
@@ -58,12 +57,10 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
     private TextView stepsToKg;
     private FirebaseUser fUser;
 
-
     private String TAG2 = "step_sensor_data";
 
     public TabHomeFragment() {
     }
-
 
     @Nullable
     @Override
@@ -80,12 +77,12 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         fUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        //sends steps counted data to DB
         finishSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 HashMap<String, Object> nMap = new HashMap<>();
                 nMap.put("steps", stepCount);
-
 
                 FirebaseDatabase.getInstance().getReference().child("StepAppDB").child("Users")
                         .child(fUser.getUid()).updateChildren(nMap);
@@ -94,10 +91,10 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
             }
         });
 
+        //shows the user's username on screen (pulls data from DB)
         databaseReference = FirebaseDatabase.getInstance()
                 .getReference().child("StepAppDB").child("Users")
                 .child(Objects.requireNonNull(auth.getCurrentUser()).getUid());
-
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -105,16 +102,14 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
 
                 String name = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString().trim();
                 mainText.setText("Hello " + name + " !!");
-
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
+        //checks if step counting sensor is available on device
         if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null) {
             sensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
             isCntSensorPresent = true;
@@ -122,7 +117,6 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
             Toast.makeText(getActivity(), "Motion Sensor not Found on Device, steps will not be tracked", Toast.LENGTH_LONG).show();
             isCntSensorPresent = false;
         }
-
         return view;
     }
 
@@ -152,11 +146,10 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
     }
 
     @Override
+
+    //shows data on screen
     public void onSensorChanged(SensorEvent event) {
-//        if (event.sensor == sensor) {
-//            int sCount = (int) event.values[0];
-//            textCounter.setText(String.valueOf(sCount));
-//        }
+
         Log.d(TAG2, "event change");
         if (event != null) {
             Log.d(TAG2, "event not null");
@@ -165,13 +158,11 @@ public class TabHomeFragment extends Fragment implements SensorEventListener {
             if (event.values[0] > 6) {
                 stepCount++;
             }
-            Integer divide = (stepCount%5000);
+            Integer divide = (stepCount % 10000);
             textCounter.setText("Total Steps Taken: " + divide.toString());
-            stepsToKm.setText("Total Distance Walked: " + new DecimalFormat("##.#").format(km) + " km");
-            stepsToKg.setText("Total Calories Burned: " + new DecimalFormat("##.#").format(calories));
-
+            stepsToKm.setText("Total Distance Walked: " + new DecimalFormat("##.##").format(km) + " km");
+            stepsToKg.setText("Total Calories Burned: " + new DecimalFormat("##.##").format(calories));
         }
-
     }
 
     @Override

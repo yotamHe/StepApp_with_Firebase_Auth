@@ -1,4 +1,4 @@
-package com.example.StepApp;
+package com.example.StepApp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.StepApp.R;
+import com.example.StepApp.SensorsAndAdapters.HelpDialog;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -29,6 +30,7 @@ public class regActivity extends AppCompatActivity {
 
     private final String TAG = "myDebug";
 
+    // valid password pattern
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +
@@ -63,7 +65,6 @@ public class regActivity extends AppCompatActivity {
         completeRegBtn = findViewById(R.id.completeRegBtn);
         fullname = findViewById(R.id.fullname);
         helpBtn = findViewById(R.id.helpBtn);
-//        rRootRef = FirebaseDatabase.getInstance().getReference();
         helpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +77,11 @@ public class regActivity extends AppCompatActivity {
         pd = new ProgressDialog(this);
 
 
+        /*
+         * what happens when the user clicks on the register button:
+         * if valid - continues to login screen
+         * else, error messages will appear
+         * */
         completeRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,21 +126,25 @@ public class regActivity extends AppCompatActivity {
         });
     }
 
+    //opens a help dialog
     public void openDialog() {
         HelpDialog HelpDialog = new HelpDialog();
         HelpDialog.show(getSupportFragmentManager(), "dialog");
     }
 
+    //returns to login screen
     public void backToLogin(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
+    //shows a loader until registration is done
     public void regUser(String Email, String Password) {
-        Log.d("result", "result"); // did appear in Logcat
+        Log.d("result", "result");
         pd.setMessage("Please Wait..");
         pd.show();
 
+        //authentication with Firebase
         auth.createUserWithEmailAndPassword(regInputEmail.getText().toString().trim(), regInputPassword.getText().toString().trim()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
@@ -144,10 +154,10 @@ public class regActivity extends AppCompatActivity {
                 users.put("email", regInputEmail.getText().toString().trim());
                 users.put("password", regInputPassword.getText().toString().trim());
                 users.put("Imageurl", "default");
-                users.put("birthDate","null");
-                users.put("Height","null");
-                users.put("Weight","null");
-                users.put("steps","0");
+                users.put("birthDate", "null");
+                users.put("Height", "null");
+                users.put("Weight", "null");
+                users.put("steps", "0");
                 rRootRef.child(auth.getCurrentUser().getUid())
                         .setValue(users)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -175,45 +185,5 @@ public class regActivity extends AppCompatActivity {
             }
         });
 
-
-//        auth.createUserWithEmailAndPassword(regInputEmail.getText().toString(), regInputPassword.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//            @Override
-//            public void onSuccess(AuthResult authResult) {
-//                HashMap<String, Object> regMap = new HashMap<>();
-//                regMap.put("Email", regInputEmail);
-//                regMap.put("Password", regInputPassword);
-//                //regMap.put("Full Name", fullname);
-//                regMap.put("Imageurl", "default");
-//                regMap.put("ID", Objects.requireNonNull(auth.getCurrentUser()).getUid());
-//                rRootRef.child("StepAppDB").child("Users")
-//                        .child(auth.getCurrentUser().getUid())
-//                        .setValue(regMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if (task.isSuccessful()) {
-//                            pd.dismiss();
-//                            Log.d("result2", "result2"); // did not appear in Logcat
-//                            Toast.makeText(regActivity.this, "Registration Succeeded", Toast.LENGTH_SHORT).show();
-//                            Log.d("result3", "result3"); // did not appear in Logcat
-//                            FirebaseUser user = auth.getCurrentUser();
-//                            Intent in = new Intent(regActivity.this, MainActivity.class);
-//                            in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                            startActivity(in);
-//                            finish();
-//                        } else {
-//                            Log.d("test", "test");
-//                            Toast.makeText(regActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                });
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                pd.dismiss();
-//                Toast.makeText(regActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 }
